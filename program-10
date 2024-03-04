@@ -1,0 +1,26 @@
+You are given a large integer represented as an integer array of digits, where each digit [i] is the ith digit
+of the integer. The digits are ordered from most significant to least significant in left-to-right order. The
+large integer does not contain any leading 0s. Increment the large integer by one and return the resulting
+array of digits
+
+
+def plus_one(digits):
+    n = len(digits)
+    carry = 1
+
+   
+    for i in range(n - 1, -1, -1):
+        total = digits[i] + carry
+        digits[i] = total % 10  # Update current digit
+        carry = total // 10      # Calculate carry
+
+   
+    if carry:
+        digits.insert(0, carry)
+
+    return digits
+
+# Test cases
+print(plus_one([1, 2, 3]))  
+print(plus_one([4, 3, 2, 1]))
+print(plus_one([9, 9, 9]))    
