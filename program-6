@@ -1,0 +1,29 @@
+Given an integer array of nums and an integer value, remove all occurrences of val in nums in place. The
+order of the elements may be changed. Then, return the number of elements in nums that are not equal
+to value. Consider the number of elements in nums which are not equal to val be k, to get accepted, you
+need to do the following things: Change the array nums such that the first k elements of nums contain
+the elements which are not equal to val. The remaining elements of nums are not essential, nor is the
+size of nums. Return k.
+
+
+
+def remove_element(nums, val):
+    # Initialize pointer for non-value elements
+    k = 0
+
+    # Iterate through the array
+    for i in range(len(nums)):
+        if nums[i] != val:
+            # If the current element is not equal to val,
+            # move it to the position indicated by k
+            nums[k] = nums[i]
+            k += 1
+
+    return k
+
+# Example usage:
+nums = [3, 2, 2, 3]
+val = 3
+k = remove_element(nums, val)
+print("Number of elements after removal:", k)  # Output: 2
+print("Modified nums array:", nums[:k])  # Output: [2, 2]
