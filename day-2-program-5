@@ -1,0 +1,12 @@
+The complement of an integer is the integer you get when you flip all the 0’s to 1’s and all the 1’s to 0’s
+in its binary representation. Given an integer num, return its complement
+
+  def findComplement(num): 
+    num_bits = num.bit_length()
+    bitmask = (1 << num_bits) - 1
+    complement = num ^ bitmask
+    return complement
+
+# Test the function
+num = 5
+print(findComplement(num)) 
