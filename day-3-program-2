@@ -1,0 +1,25 @@
+Given a string s, find the length of the longest substring without repeating characters
+
+
+def lengthOfLongestSubstring(s: str) -> int:
+    # Dictionary to store the index of characters
+    char_index = {}
+    max_length = 0
+    start_index = 0
+
+    for end_index, char in enumerate(s):
+        # If the character is already seen, update the start_index
+        if char in char_index and char_index[char] >= start_index:
+            start_index = char_index[char] + 1
+
+        # Update the index of the current character
+        char_index[char] = end_index
+
+        # Update the maximum length
+        max_length = max(max_length, end_index - start_index + 1)
+
+    return max_length
+
+# Test the function
+s = "abcabcbb"
+print(lengthOfLongestSubstring(s))  # Output: 3
