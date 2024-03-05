@@ -1,0 +1,28 @@
+Given an integer num, return a string of its base 7 representation.
+
+  def convertToBase7(num):
+    if num == 0:
+        return "0"
+
+    result = ""
+    is_negative = False
+
+    if num < 0:
+        is_negative = True
+        num = abs(num)
+
+    while num:
+        num, remainder = divmod(num, 7)
+        result = str(remainder) + result
+
+    if is_negative:
+        result = "-" + result
+
+    return result
+
+# Test the function
+num = 100
+print(convertToBase7(num))  # Output: "202"
+
+num = -7
+print(convertToBase7(num))  # Output: "-10"
