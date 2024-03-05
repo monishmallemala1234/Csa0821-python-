@@ -1,0 +1,37 @@
+Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go
+outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+
+
+
+
+  def reverse_integer(x: int) -> int:
+    
+    sign = -1 if x < 0 else 1
+    x *= sign
+
+ 
+    result = 0
+
+    while x != 0:
+        # Extract the last digit of x
+        digit = x % 10
+        # Check if reversing x causes overflow
+        if result > (2**31 - 1 - digit) // 10:
+            return 0
+        result = result * 10 + digit
+        # Remove the last digit from x
+        x //= 10
+    result *= sign
+
+    return result
+
+# Test cases
+x1 = 123
+x2 = -123
+x3 = 120
+x4 = 1534236469
+
+print(reverse_integer(x1)) 
+print(reverse_integer(x2))  
+print(reverse_integer(x3))  
+print(reverse_integer(x4))  
